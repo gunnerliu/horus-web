@@ -2,6 +2,53 @@ export const schema = {
   type: "page",
   body: [
     {
+      label: "新增脚本",
+      type: "button",
+      actionType: "dialog",
+      level: "primary",
+      className: "m-b-sm",
+      dialog: {
+        title: "新增脚本",
+        size: "lg",
+        body: {
+          type: "form",
+          api: "PUT:/api/horus/groovy/addGroovy",
+          messages: {
+            saveSuccess: "保存成功！",
+          },
+          body: [
+            {
+              type: "input-text",
+              name: "groovyCode",
+              label: "脚本 code",
+              required: true,
+            },
+            {
+              type: "select",
+              label: "执行类型",
+              name: "executeType",
+              required: true,
+              options: [
+                {
+                  label: "类加载",
+                  value: "CLASS_LOAD",
+                },
+                {
+                  label: "脚本",
+                  value: "SCRIPT",
+                },
+              ],
+            },
+            {
+              type: "json-editor",
+              language: "java",
+              name: "scriptContent",
+            },
+          ],
+        },
+      },
+    },
+    {
       type: "crud",
       api: "GET:/api/horus/groovy/pageGroovyInfo?pageIndex=${page}&pageSize=${perPage}",
       columns: [
