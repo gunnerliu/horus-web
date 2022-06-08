@@ -74,8 +74,8 @@ const config = {
         header: {
           showDevItem: false,
           brand: {
-            logo: "/static/images/archlinux-logo.png",
-            title: "HorusEye",
+            logo: "/static/images/horus-eye.svg",
+            title: "Horus",
             link: {
               title: "dashboard",
               href: "/",
