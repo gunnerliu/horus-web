@@ -31,11 +31,11 @@ const config = {
       domains: {
         api: "http://127.0.0.1:9013",
       },
-      logger: {
-        // 日志配置
-        moduleName: ".*", // 打印任何配置
-        level: "log", // 打印 log 级别日志
-      },
+      // logger: {
+      //   // 日志配置
+      //   moduleName: ".*", // 打印任何配置
+      //   level: "log", // 打印 log 级别日志
+      // },
     },
     // 本地开发
     localhost: {
