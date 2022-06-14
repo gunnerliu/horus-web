@@ -11,6 +11,10 @@ import { request } from "./app/request";
 const config = {
   request: request,
   env: env,
+  constants: {
+    routePrefix: "/horus-web/",
+    rootLimitFlag: "/horus-web/",
+  },
   entry: entry,
 };
 

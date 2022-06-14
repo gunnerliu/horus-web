@@ -64,6 +64,11 @@ export const entry = [
               icon: "fa fa-align-justify",
               nodePath: "colfilter",
             },
+            {
+              label: "消息触达",
+              icon: "fa fa-envelope",
+              nodePath: "reach",
+            },
           ],
         },
       ],

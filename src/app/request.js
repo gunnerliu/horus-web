@@ -1,7 +1,10 @@
 import { Request } from "@core/utils/request";
 import { toast } from "amis";
+import logger from "@core/utils/logger";
 
 export const request = new Request();
+
+const log = logger.getLogger("app:request");
 
 var errors_1 = require("amis/lib/utils/errors");
 

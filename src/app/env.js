@@ -25,7 +25,7 @@ export const env = {
   // 生产环境
   production: {
     domains: {
-      api: "http://192.168.31.106",
+      api: "http://www.archliu.cn:9001",
     },
   },
 };

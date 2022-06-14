@@ -143,6 +143,70 @@ export const schema = {
           format: "YYYY-MM-DD HH:mm:ss",
           label: "更新时间",
         },
+        {
+          type: "operation",
+          label: "操作",
+          buttons: [
+            {
+              label: "执行记录",
+              type: "button",
+              actionType: "dialog",
+              level: "primary",
+              dialog: {
+                title: "执行记录",
+                size: "lg",
+                body: {
+                  type: "crud",
+                  api: "GET:/api/horus/schedule/pageHistory?jobCode=${jobCode}&pageIndex=${page}&pageSize=${perPage}",
+                  messages: {
+                    saveSuccess: "success",
+                  },
+                  columns: [
+                    {
+                      name: "id",
+                      label: "主键",
+                      fixed: "left",
+                    },
+                    {
+                      name: "jobCode",
+                      label: "定时任务编号",
+                      fixed: "left",
+                    },
+                    {
+                      name: "cornStr",
+                      label: "corn表达式",
+                      fixed: "left",
+                    },
+                    {
+                      name: "paramStr",
+                      label: "定时任务参数",
+                    },
+                    {
+                      name: "executeState",
+                      label: "执行结果",
+                    },
+                    {
+                      name: "msg",
+                      label: "提示信息",
+                    },
+                    {
+                      name: "createTime",
+                      type: "date",
+                      format: "YYYY-MM-DD HH:mm:ss",
+                      label: "创建时间",
+                    },
+                    {
+                      name: "updateTime",
+                      type: "date",
+                      format: "YYYY-MM-DD HH:mm:ss",
+                      label: "更新时间",
+                    },
+                  ],
+                },
+              },
+            },
+          ],
+        },
       ],
     },
   ],
