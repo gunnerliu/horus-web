@@ -16,7 +16,7 @@ export const entry = [
       header: {
         showDevItem: false,
         brand: {
-          logo: "/static/images/horus-eye.svg",
+          logo: "/horus-web/static/images/horus-eye.svg",
           title: "Horus",
           link: {
             title: "dashboard",
