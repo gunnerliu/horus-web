@@ -58,11 +58,6 @@ export const schema = {
           fixed: "left",
         },
         {
-          name: "groovyFileName",
-          label: "文件名",
-          fixed: "left",
-        },
-        {
           name: "filePath",
           label: "脚本路径",
           fixed: "left",
