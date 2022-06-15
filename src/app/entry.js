@@ -66,8 +66,25 @@ export const entry = [
             },
             {
               label: "消息触达",
-              icon: "fa fa-envelope",
+              icon: "fa fa-comments-o",
               nodePath: "reach",
+              children: [
+                {
+                  label: "触达通道",
+                  icon: "fa fa-paper-plane-o",
+                  nodePath: "channel",
+                },
+                {
+                  label: "接收人",
+                  icon: "fa fa-address-card",
+                  nodePath: "receiver",
+                },
+                {
+                  label: "消息发送",
+                  icon: "fa fa-envelope",
+                  nodePath: "sendmsg",
+                },
+              ],
             },
           ],
         },
