@@ -122,6 +122,38 @@ export const schema = {
                 },
               },
             },
+            {
+              type: "button",
+              label: "执行",
+              actionType: "dialog",
+              level: "primary",
+              dialog: {
+                confirmMode: false,
+                title: "groovy 脚本",
+                actions: [
+                  {
+                    type: "button",
+                    actionType: "confirm",
+                    label: "OK",
+                    primary: true,
+                  },
+                ],
+                body: {
+                  type: "form",
+                  api: "POST:/api/horus/groovy/executeGroovy?groovyCode=${groovyCode}",
+                  messages: {
+                    saveSuccess: "执行成功！",
+                  },
+                  body: [
+                    {
+                      type: "json-editor",
+                      language: "json",
+                      name: "content",
+                    },
+                  ],
+                },
+              },
+            },
           ],
         },
       ],
