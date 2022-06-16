@@ -58,6 +58,18 @@ export const entry = [
               label: "动态脚本",
               icon: "fa fa-bolt",
               nodePath: "groovy",
+              children: [
+                {
+                  label: "脚本列表",
+                  icon: "fa fa-bars",
+                  nodePath: "list",
+                },
+                {
+                  label: "脚本执行",
+                  icon: "fa fa-magic",
+                  nodePath: "exec",
+                },
+              ],
             },
             {
               label: "数据插件",
