@@ -8,41 +8,81 @@ export const schema = {
       level: "primary",
       className: "m-b-sm",
       dialog: {
-        title: "新增脚本",
+        title: "新增接收人",
         size: "lg",
         body: {
           type: "form",
-          api: "PUT:/api/horus/groovy/addGroovy",
+          api: "PUT:/api/horus/reach/addReceiver",
           messages: {
             saveSuccess: "保存成功！",
           },
           body: [
             {
               type: "input-text",
-              name: "groovyCode",
-              label: "脚本 code",
+              name: "receiverName",
+              label: "接收人名称",
               required: true,
             },
             {
               type: "select",
-              label: "执行类型",
-              name: "executeType",
+              label: "消息推送方式",
+              name: "reacher",
               required: true,
               options: [
                 {
-                  label: "类加载",
-                  value: "CLASS_LOAD",
+                  label: "钉钉",
+                  value: "DING_TALK",
                 },
                 {
-                  label: "脚本",
-                  value: "SCRIPT",
+                  label: "企业微信",
+                  value: "WORK_WX",
+                },
+                {
+                  label: "飞书",
+                  value: "FEI_SHU",
+                },
+                {
+                  label: "电子邮件",
+                  value: "EMAIL",
                 },
               ],
             },
             {
-              type: "json-editor",
-              language: "java",
-              name: "scriptContent",
+              type: "input-text",
+              name: "mobile",
+              label: "手机号码",
+              required: true,
+              validations: {
+                isPhoneNumber: true,
+              },
+            },
+            {
+              type: "input-email",
+              name: "email",
+              label: "电子邮箱",
+              required: true,
+            },
+            {
+              type: "input-text",
+              name: "webHook",
+              label: "群机器人webhook",
+              required: true,
+            },
+            {
+              type: "select",
+              label: "启用状态",
+              name: "enableState",
+              required: true,
+              options: [
+                {
+                  label: "启用",
+                  value: "ENABLED",
+                },
+                {
+                  label: "禁用",
+                  value: "DISABLED",
+                },
+              ],
             },
           ],
         },
@@ -50,7 +90,7 @@ export const schema = {
     },
     {
       type: "crud",
-      api: "GET:/api/horus/reach/pageChannels?pageIndex=${page}&pageSize=${perPage}",
+      api: "GET:/api/horus/reach/pageReceivers?pageIndex=${page}&pageSize=${perPage}",
       columns: [
         {
           name: "id",
@@ -58,33 +98,39 @@ export const schema = {
           hidden: true,
         },
         {
-          name: "channelCode",
-          label: "通道编码",
+          name: "receiverName",
+          label: "接收人名称",
           fixed: "left",
         },
         {
-          name: "groovyFileName",
-          label: "文件名",
+          name: "reacher",
+          label: "消息推送方式",
           fixed: "left",
         },
         {
-          name: "filePath",
-          label: "脚本路径",
+          name: "mobile",
+          label: "手机号码",
           fixed: "left",
         },
         {
-          label: "执行类型",
+          name: "email",
+          label: "电子邮箱",
+          fixed: "left",
+        },
+        {
+          name: "webHook",
+          label: "webHook",
+          fixed: "left",
+        },
+        {
+          label: "启用状态",
           type: "mapping",
-          name: "executeType",
+          name: "enableState",
           map: {
-            CLASS_LOAD: "类加载",
-            SCRIPT: "脚本",
-            "*": "${executeType}",
+            ENABLED: "启用",
+            DISABLED: "禁用",
+            "*": "${enableState}",
           },
-        },
-        {
-          name: "lastModTime",
-          label: "最后修改时间",
         },
         {
           name: "createTime",
@@ -104,7 +150,7 @@ export const schema = {
           buttons: [
             {
               type: "button",
-              label: "查看",
+              label: "删除",
               actionType: "dialog",
               dialog: {
                 confirmMode: false,

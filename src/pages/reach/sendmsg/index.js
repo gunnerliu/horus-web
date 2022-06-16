@@ -2,132 +2,47 @@ export const schema = {
   type: "page",
   body: [
     {
-      label: "新增脚本",
-      type: "button",
-      actionType: "dialog",
-      level: "primary",
-      className: "m-b-sm",
-      dialog: {
-        title: "新增脚本",
-        size: "lg",
-        body: {
-          type: "form",
-          api: "PUT:/api/horus/groovy/addGroovy",
-          messages: {
-            saveSuccess: "保存成功！",
-          },
-          body: [
-            {
-              type: "input-text",
-              name: "groovyCode",
-              label: "脚本 code",
-              required: true,
-            },
-            {
-              type: "select",
-              label: "执行类型",
-              name: "executeType",
-              required: true,
-              options: [
-                {
-                  label: "类加载",
-                  value: "CLASS_LOAD",
-                },
-                {
-                  label: "脚本",
-                  value: "SCRIPT",
-                },
-              ],
-            },
-            {
-              type: "json-editor",
-              language: "java",
-              name: "scriptContent",
-            },
-          ],
-        },
+      type: "form",
+      title: "消息发送",
+      api: "PUT:/api/horus/reach/sendMessage",
+      messages: {
+        saveSuccess: "发送成功！",
       },
-    },
-    {
-      type: "crud",
-      api: "GET:/api/horus/groovy/pageGroovyInfo?pageIndex=${page}&pageSize=${perPage}",
-      columns: [
+      body: [
         {
-          name: "groovyCode",
-          label: "脚本 code",
-          fixed: "left",
+          type: "input-text",
+          name: "categoryCode",
+          label: "消息类别",
+          required: true,
         },
         {
-          name: "groovyFileName",
-          label: "文件名",
-          fixed: "left",
+          type: "input-text",
+          name: "tag",
+          label: "消息标签",
+          required: true,
         },
         {
-          name: "filePath",
-          label: "脚本路径",
-          fixed: "left",
-        },
-        {
-          label: "执行类型",
-          type: "mapping",
-          name: "executeType",
-          map: {
-            CLASS_LOAD: "类加载",
-            SCRIPT: "脚本",
-            "*": "${executeType}",
-          },
-        },
-        {
-          name: "lastModTime",
-          label: "最后修改时间",
-        },
-        {
-          name: "createTime",
-          label: "创建时间",
-          type: "date",
-          format: "YYYY-MM-DD HH:mm:ss",
-        },
-        {
-          name: "updateTime",
-          label: "更新时间",
-          type: "date",
-          format: "YYYY-MM-DD HH:mm:ss",
-        },
-        {
-          type: "operation",
-          label: "操作",
-          buttons: [
+          type: "select",
+          label: "消息等级",
+          name: "level",
+          required: true,
+          options: [
             {
-              type: "button",
-              label: "查看",
-              actionType: "dialog",
-              dialog: {
-                confirmMode: false,
-                title: "groovy 脚本",
-                size: "lg",
-                actions: [
-                  {
-                    type: "button",
-                    actionType: "confirm",
-                    label: "OK",
-                    primary: true,
-                  },
-                ],
-                body: {
-                  type: "form",
-                  initApi: "GET:/api/horus/groovy/groovyDetail?groovyCode=${groovyCode}",
-                  body: [
-                    {
-                      type: "json-editor",
-                      language: "java",
-                      name: "content",
-                      disabled: true,
-                    },
-                  ],
-                },
-              },
+              label: "聚合消息",
+              value: "AGGREGATION",
+            },
+            {
+              label: "即时消息",
+              value: "INSTANT",
             },
           ],
+        },
+        {
+          type: "editor",
+          language: "markdown",
+          label: "消息内容(markdown)",
+          name: "content",
+          required: true,
         },
       ],
     },
