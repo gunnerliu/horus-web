@@ -205,6 +205,16 @@ export const schema = {
                 },
               },
             },
+            {
+              label: "执行",
+              type: "button",
+              actionType: "ajax",
+              level: "primary",
+              api: "POST:/api/horus/schedule/runSchedule?jobCode=${jobCode}",
+              messages: {
+                success: "执行成功",
+              },
+            },
           ],
         },
       ],
